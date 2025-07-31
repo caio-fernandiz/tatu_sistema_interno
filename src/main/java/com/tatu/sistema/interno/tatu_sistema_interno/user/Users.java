@@ -32,6 +32,7 @@ public class Users implements UserDetails{
     private String login;
     private String password;
     private UserRole role;
+    private Boolean loyalCostumer;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
