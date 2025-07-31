@@ -7,11 +7,13 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.tatu.sistema.interno.tatu_sistema_interno.appointments.Appointments;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,7 +26,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @EqualsAndHashCode(of = "id")
-public class Users implements UserDetails{
+public class Users implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -34,10 +36,15 @@ public class Users implements UserDetails{
     private UserRole role;
     private Boolean loyalCostumer;
 
+    @OneToMany(mappedBy = "user")
+    private List<Appointments> appointments;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(this.role == UserRole.EMPLOYEE) return List.of(new SimpleGrantedAuthority("ROLE_EMPLOYEE"), new SimpleGrantedAuthority("ROLE_COSTUMER"));
-        else return List.of(new SimpleGrantedAuthority("ROLE_COSTUMER"));
+        if (this.role == UserRole.EMPLOYEE)
+            return List.of(new SimpleGrantedAuthority("ROLE_EMPLOYEE"), new SimpleGrantedAuthority("ROLE_COSTUMER"));
+        else
+            return List.of(new SimpleGrantedAuthority("ROLE_COSTUMER"));
     }
 
     @Override

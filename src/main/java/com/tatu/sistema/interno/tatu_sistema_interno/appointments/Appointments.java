@@ -2,10 +2,14 @@ package com.tatu.sistema.interno.tatu_sistema_interno.appointments;
 
 import java.time.LocalDateTime;
 
+import com.tatu.sistema.interno.tatu_sistema_interno.user.Users;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -25,4 +29,10 @@ public class Appointments {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime appointmentsDate;
+
+    
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private Users user;
+
 }
