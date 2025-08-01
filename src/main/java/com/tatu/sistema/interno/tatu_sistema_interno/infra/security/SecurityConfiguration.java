@@ -21,6 +21,8 @@ public class SecurityConfiguration {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
+                                        .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                                        .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
                                         .requestMatchers(HttpMethod.POST, "/teste").hasRole("EMPLOYEE")
                                         .anyRequest().authenticated())
                 .build();
@@ -34,5 +36,5 @@ public class SecurityConfiguration {
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
-    }
+    } 
 }
