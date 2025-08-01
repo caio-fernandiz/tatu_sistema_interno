@@ -10,8 +10,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@Table(name = "users")
-@Entity(name = "users")
+@Table(name = "mode")
+@Entity(name = "mode")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
