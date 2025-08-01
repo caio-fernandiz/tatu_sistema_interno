@@ -22,7 +22,7 @@ public class Mode {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-   private String nomeDaCoisa;
+    private String nomeDaCoisa;
     private String identificador;
     private Integer quantidade;
 }
