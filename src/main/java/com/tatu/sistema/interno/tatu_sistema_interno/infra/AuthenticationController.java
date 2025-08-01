@@ -3,6 +3,7 @@ package com.tatu.sistema.interno.tatu_sistema_interno.infra;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tatu.sistema.interno.tatu_sistema_interno.infra.security.TokenService;
 import com.tatu.sistema.interno.tatu_sistema_interno.user.Users;
 import com.tatu.sistema.interno.tatu_sistema_interno.user.UsersRepository;
 
@@ -29,12 +30,15 @@ public class AuthenticationController {
     private AuthenticationManager authenticationManager;
     @Autowired
     private UsersRepository usersRepository;
+    @Autowired
+    private TokenService tokenService;
 
     @PostMapping("/login")
     public ResponseEntity login (@RequestBody @Valid AuthenticationDTO data) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
-        return ResponseEntity.ok().build();
+        var token = tokenService.generateToken((Users) auth.getPrincipal());
+        return ResponseEntity.ok(new LoginResponseDTO(token));
     }
     
     @PostMapping("/register")
