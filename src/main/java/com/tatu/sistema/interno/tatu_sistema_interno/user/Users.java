@@ -33,13 +33,12 @@ public class Users implements UserDetails {
     private String id;
     private String login;
     private String password;
-    private UserRole role;
-    private Boolean loyalCostumer;
+    private UserRole role = UserRole.COSTUMER;
+    private Boolean loyalCostumer = false;
 
-    public Users(String login, String password, UserRole role){
+    public Users(String login, String password){
         this.login = login;
         this.password = password;
-        this.role = role;
     }
 
     @OneToMany(mappedBy = "user")
