@@ -23,15 +23,18 @@ public class Servic {
         }
     }
 
-    public DTO atualizar(String identificador, DTO form){
-        Mode mode = repository.findByIdentificador(identificador).orElseThrow(() -> new RuntimeException("Não tem"));
-        if(form.identificador() != null && repository.existsByIdentificador(identificador)){
-            throw new IllegalArgumentException("Já tem");
-        }
-        
-        updater.atualizar(mode, form);
-        return new DTO(repository.save(mode));
+    public DTO atualizar(String identificador, DTO form) {
+    Mode mode = repository.findByIdentificador(identificador).orElseThrow(() -> new RuntimeException("Não tem"));
+    
+    // Verifica se está tentando alterar para um identificador que já existe
+    if(form.identificador() != null && !form.identificador().equals(identificador) && repository.existsByIdentificador(form.identificador())) {
+        throw new IllegalArgumentException("Já existe outro registro com este identificador");
     }
+    
+    updater.atualizar(mode, form);
+    repository.save(mode);
+    return new DTO(mode);
+}
 
     public DTO achardModePeloIdentificador(String identificador){
         return repository.findByIdentificador(identificador).map(DTO::new).orElseThrow(() -> new RuntimeException("não achado" + identificador));
@@ -42,6 +45,6 @@ public class Servic {
     }
 
     public void deletar(String identificador){
-        repository.dedeleteByIdentificador(identificador);
+        repository.deleteByIdentificador(identificador);
     }
 }
