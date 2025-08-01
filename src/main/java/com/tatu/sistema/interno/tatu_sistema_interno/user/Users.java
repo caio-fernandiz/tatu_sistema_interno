@@ -36,6 +36,14 @@ public class Users implements UserDetails {
     private UserRole role;
     private Boolean loyalCostumer;
 
+    public User(String login, String password, UserRole role){
+        this.login = login;
+        this.password = password;
+        this.role = role;
+
+        
+    }
+
     @OneToMany(mappedBy = "user")
     private List<Appointments> appointments;
 
