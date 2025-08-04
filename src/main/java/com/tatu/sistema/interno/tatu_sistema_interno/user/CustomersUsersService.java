@@ -1,5 +1,7 @@
 package com.tatu.sistema.interno.tatu_sistema_interno.user;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,11 +19,10 @@ public class CustomersUsersService {
         return new CustomersUsersDTO(usersRepository.save(users));
     }
 
-    public CustomersUsersDTO findByCostumers(UserRole role){
+    public  List<CustomersUsersDTO> findListByRoleCustomer (){
+        List <Users> customersUsers = usersRepository.findListByRole(UserRole.CUSTOMER);
 
-   
-
-        return null;
+        return customersUsers.stream().map(users -> new CustomersUsersDTO(users.getId(), users.getLogin(), users.getPhone(), users.getLoyalCustomer())).toList();
     }
     
 }
