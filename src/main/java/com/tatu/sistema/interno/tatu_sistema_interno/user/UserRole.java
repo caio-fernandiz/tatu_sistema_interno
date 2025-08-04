@@ -3,7 +3,7 @@ package com.tatu.sistema.interno.tatu_sistema_interno.user;
 public enum UserRole {
 
     EMPLOYEE("employee"),
-    COSTUMER("costumer");
+    CUSTOMER("customer");
 
     private String role;
 

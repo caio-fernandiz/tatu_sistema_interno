@@ -13,19 +13,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/costumers")
-public class CosturmersUsersController {
+public class CustomersUsersController {
 
-    private final CostumerUsersService costumerUsersService;
+    private final CustomersUsersService costumerUsersService;
 
-    public CosturmersUsersController(CostumerUsersService costumerUsersService){
+    public CustomersUsersController(CustomersUsersService costumerUsersService){
         this.costumerUsersService = costumerUsersService;        
     }
 
 
     @PutMapping("loyal-status/{phone}")
-    public ResponseEntity<CostumersUsersDTO> updateStatusCostumer (@PathVariable String phone, @RequestBody Boolean loyalCostumer) {
+    public ResponseEntity<CustomersUsersDTO> updateStatusCostumer (@PathVariable String phone, @RequestBody Boolean loyalCostumer) {
         
-        CostumersUsersDTO updateStatusCostumer = costumerUsersService.updateStatusCostumer(phone, loyalCostumer);
+        CustomersUsersDTO updateStatusCostumer = costumerUsersService.updateStatusCostumer(phone, loyalCostumer);
         
         return new ResponseEntity<>(updateStatusCostumer, HttpStatus.OK);
     }

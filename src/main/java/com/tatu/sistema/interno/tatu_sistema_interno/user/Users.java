@@ -35,8 +35,8 @@ public class Users implements UserDetails {
     private String login;
     private String password;
     private String phone;
-    private UserRole role = UserRole.COSTUMER;
-    private Boolean loyalCostumer = false;
+    private UserRole role = UserRole.CUSTOMER;
+    private Boolean loyalCustomer = false;
 
     public Users(String login, String phone, String password){
         this.login = login;
@@ -50,9 +50,9 @@ public class Users implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if (this.role == UserRole.EMPLOYEE)
-            return List.of(new SimpleGrantedAuthority("ROLE_EMPLOYEE"), new SimpleGrantedAuthority("ROLE_COSTUMER"));
+            return List.of(new SimpleGrantedAuthority("ROLE_EMPLOYEE"), new SimpleGrantedAuthority("ROLE_CUSTOMER"));
         else
-            return List.of(new SimpleGrantedAuthority("ROLE_COSTUMER"));
+            return List.of(new SimpleGrantedAuthority("ROLE_CUSTOMER"));
     }
 
     @Override
