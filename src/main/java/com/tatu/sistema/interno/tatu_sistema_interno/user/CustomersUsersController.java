@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/costumers")
+@RequestMapping("/customers")
 public class CustomersUsersController {
 
     private final CustomersUsersService costumerUsersService;
