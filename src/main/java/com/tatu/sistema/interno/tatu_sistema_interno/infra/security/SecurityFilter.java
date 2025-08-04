@@ -1,18 +1,23 @@
 package com.tatu.sistema.interno.tatu_sistema_interno.infra.security;
 
+import com.tatu.sistema.interno.tatu_sistema_interno.user.UsersRepository;
+
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import org.springframework.stereotype.Component;
+
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.tatu.sistema.interno.tatu_sistema_interno.user.UsersRepository;
-
 import jakarta.servlet.FilterChain;
+
 import jakarta.servlet.ServletException;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 

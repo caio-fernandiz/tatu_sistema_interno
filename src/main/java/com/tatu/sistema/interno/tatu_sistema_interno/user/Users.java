@@ -1,5 +1,7 @@
 package com.tatu.sistema.interno.tatu_sistema_interno.user;
 
+import com.tatu.sistema.interno.tatu_sistema_interno.appointments.Appointments;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -7,14 +9,13 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.tatu.sistema.interno.tatu_sistema_interno.appointments.Appointments;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
