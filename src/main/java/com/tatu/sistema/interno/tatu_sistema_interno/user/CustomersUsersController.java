@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/customers")
@@ -26,13 +27,19 @@ public class CustomersUsersController {
         this.customerUsersService = customerUsersService;        
     }
 
+    @GetMapping("show/{phone}")
+    public ResponseEntity <CustomersUsersDTO> findByPhone (@PathVariable String phone) {
+        CustomersUsersDTO users = customerUsersService.findByPhone(phone);
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+    
+
     @GetMapping("show/all")
     public ResponseEntity<List<CustomersUsersDTO>> findListByRoleCustomer() {
         List<CustomersUsersDTO> users = customerUsersService.findListByRoleCustomer();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
     
-
 
     @PutMapping("loyal-status/{phone}")
     public ResponseEntity<CustomersUsersDTO> updateStatusCostumer (@PathVariable String phone, @RequestBody Boolean loyalCostumer) {
