@@ -52,7 +52,11 @@ public class AuthenticationController {
 
         boolean hasError = check.elementOf(data.phone(), ParametroTipo.NUMERO).validate().hasError();
 
-        if (hasError || this.usersRepository.findByPhone(data.phone()) != null) {
+        if (usersRepository.existsByPhone(data.phone())){
+            return ResponseEntity.badRequest().build();
+        }
+
+        if (hasError) {
             return ResponseEntity.badRequest().build();
         }
 
