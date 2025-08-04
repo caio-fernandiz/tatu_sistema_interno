@@ -34,11 +34,13 @@ public class Users implements UserDetails {
     private String id;
     private String login;
     private String password;
+    private String phone;
     private UserRole role = UserRole.COSTUMER;
     private Boolean loyalCostumer = false;
 
-    public Users(String login, String password){
+    public Users(String login, String phone, String password){
         this.login = login;
+        this.phone = phone;
         this.password = password;
     }
 

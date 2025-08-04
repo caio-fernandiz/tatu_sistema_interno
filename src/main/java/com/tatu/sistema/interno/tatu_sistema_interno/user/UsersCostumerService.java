@@ -11,10 +11,10 @@ public class UsersCostumerService {
         this.usersRepository = usersRepository;
     }
 
-    public CostumerStatusDTO updateStatusCostumer(String id, Boolean loyalCostumers){
+    public CostumersUsersDTO updateStatusCostumer(String id, Boolean loyalCostumers){
         Users users = usersRepository.findById(id).orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
         users.setLoyalCostumer(loyalCostumers);
-        return new CostumerStatusDTO(usersRepository.save(users));
+        return new CostumersUsersDTO(usersRepository.save(users));
     }
 
     
