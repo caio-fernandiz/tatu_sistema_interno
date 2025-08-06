@@ -1,13 +1,13 @@
 package com.tatu.sistema.interno.tatu_sistema_interno.user;
 
-import com.tatu.sistema.interno.tatu_sistema_interno.appointments.Appointments;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.tatu.sistema.interno.tatu_sistema_interno.scheduled.Scheduled;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -45,7 +45,7 @@ public class Users implements UserDetails {
     }
 
     @OneToMany(mappedBy = "user")
-    private List<Appointments> appointments;
+    private List<Scheduled> appointments;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
