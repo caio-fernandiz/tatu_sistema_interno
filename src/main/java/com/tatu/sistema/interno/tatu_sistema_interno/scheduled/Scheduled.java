@@ -1,4 +1,4 @@
-package com.tatu.sistema.interno.tatu_sistema_interno.appointments;
+package com.tatu.sistema.interno.tatu_sistema_interno.scheduled;
 
 import java.time.LocalDateTime;
 
@@ -23,16 +23,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @EqualsAndHashCode(of = "id")
-public class Appointments {
+public class Scheduled {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDateTime appointmentsDate;
+    private LocalDateTime scheduledDate;
 
     
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private Users user;
+    private Users users;
 
 }
