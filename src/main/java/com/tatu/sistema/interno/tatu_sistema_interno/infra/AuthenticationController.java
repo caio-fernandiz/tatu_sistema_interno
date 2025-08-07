@@ -4,26 +4,23 @@ import com.tatu.sistema.interno.tatu_sistema_interno.infra.security.TokenService
 import com.tatu.sistema.interno.tatu_sistema_interno.user.Users;
 import com.tatu.sistema.interno.tatu_sistema_interno.user.UsersRepository;
 
+import jakarta.validation.Valid;
+
+import lombok.experimental.var;
+
 import br.com.safeguard.check.SafeguardCheck;
 import br.com.safeguard.types.ParametroTipo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
-import jakarta.validation.Valid;
-
-import lombok.experimental.var;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.http.ResponseEntity;
-
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @RestController
 @CrossOrigin("*")

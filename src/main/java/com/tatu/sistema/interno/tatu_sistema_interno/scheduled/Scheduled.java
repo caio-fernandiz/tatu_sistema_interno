@@ -1,8 +1,13 @@
 package com.tatu.sistema.interno.tatu_sistema_interno.scheduled;
 
+import com.tatu.sistema.interno.tatu_sistema_interno.user.Users;
+
 import java.time.LocalDateTime;
 
-import com.tatu.sistema.interno.tatu_sistema_interno.user.Users;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,11 +16,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 @Table(name = "scheduled")
 @Entity(name = "scheduled")
