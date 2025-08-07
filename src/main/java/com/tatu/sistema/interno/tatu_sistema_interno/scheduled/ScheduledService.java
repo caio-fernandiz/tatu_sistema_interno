@@ -1,5 +1,6 @@
 package com.tatu.sistema.interno.tatu_sistema_interno.scheduled;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,10 @@ public class ScheduledService {
 
     public List<ScheduledDTO> listAllScheduledDatesByUser(String userId){
         return scheduledRepository.findByUsers_Id(userId).stream().map(ScheduledDTO::new).toList();
+    }
+
+    public List<ScheduledDTO> listAllSchedulesByDate(LocalDateTime scheduledDate){
+        return scheduledRepository.findByScheduledDate(scheduledDate).stream().map(ScheduledDTO::new).toList();
     }
     
     public List<ScheduledDTO> listAllScheduledDates(){

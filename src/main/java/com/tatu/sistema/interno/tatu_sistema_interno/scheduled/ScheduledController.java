@@ -1,5 +1,6 @@
 package com.tatu.sistema.interno.tatu_sistema_interno.scheduled;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,12 @@ public class ScheduledController {
         List<ScheduledDTO> scheduleDatesForUser = scheduledService.listAllScheduledDatesByUser(userId);
         return new ResponseEntity<>(scheduleDatesForUser, HttpStatus.OK);
     }
+
+    @GetMapping("/show/schedules/{scheduledDate}")
+    public ResponseEntity<List<ScheduledDTO>> listAllSchedulesByDate (@PathVariable LocalDateTime scheduledDate) {
+        List<ScheduledDTO> scheduledForDate = scheduledService.listAllSchedulesByDate(scheduledDate);
+        return new ResponseEntity<>(scheduledForDate, HttpStatus.OK);
+    }
     
 
     @PostMapping("/newdate")
@@ -55,7 +62,7 @@ public class ScheduledController {
         }
         Users loggedUser = (Users) authentication.getPrincipal();
         scheduled.setUsers(loggedUser);
-        ScheduledDTO newDateScheduledDTO = scheduledService.saveNewDate(scheduled);
-        return new ResponseEntity<>(newDateScheduledDTO, HttpStatus.OK);
+        ScheduledDTO newDateScheduled = scheduledService.saveNewDate(scheduled);
+        return new ResponseEntity<>(newDateScheduled, HttpStatus.OK);
     }
 }
