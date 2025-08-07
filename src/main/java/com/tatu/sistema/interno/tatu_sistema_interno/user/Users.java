@@ -44,8 +44,8 @@ public class Users implements UserDetails {
         this.password = password;
     }
 
-    @OneToMany(mappedBy = "user")
-    private List<Scheduled> appointments;
+    @OneToMany(mappedBy = "users")
+    private List<Scheduled> scheduled;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

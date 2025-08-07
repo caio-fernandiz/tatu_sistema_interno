@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 
 
 public interface ScheduledRepository extends JpaRepository <Scheduled, Long>{
-    @Query("SELECT a FROM Scheduled a JOIN FETCH a.users")
+    @Query("SELECT a FROM scheduled a JOIN FETCH a.users")
     List<Scheduled> findAllWithCustomer();
 }
