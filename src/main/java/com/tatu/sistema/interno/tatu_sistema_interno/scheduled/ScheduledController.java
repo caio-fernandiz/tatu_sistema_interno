@@ -14,10 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.tatu.sistema.interno.tatu_sistema_interno.user.Users;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @CrossOrigin("*")
@@ -37,21 +40,22 @@ public class ScheduledController {
         return new ResponseEntity<>(scheduledDates, HttpStatus.OK);
     }
 
+    @GetMapping("/show/datesforuser/{userId}")
+    public ResponseEntity<List<ScheduledDTO>> listAllScheduledDatesByUser(@PathVariable String userId) {
+        List<ScheduledDTO> scheduleDatesForUser = scheduledService.listAllScheduledDatesByUser(userId);
+        return new ResponseEntity<>(scheduleDatesForUser, HttpStatus.OK);
+    }
+    
+
     @PostMapping("/newdate")
     public ResponseEntity<ScheduledDTO> saveNewDate(@Valid @RequestBody Scheduled scheduled) {
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
         if (authentication == null || !authentication.isAuthenticated()) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
-
         Users loggedUser = (Users) authentication.getPrincipal();
-
         scheduled.setUsers(loggedUser);
-
         ScheduledDTO newDateScheduledDTO = scheduledService.saveNewDate(scheduled);
-
         return new ResponseEntity<>(newDateScheduledDTO, HttpStatus.OK);
     }
 }

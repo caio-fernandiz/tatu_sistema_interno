@@ -15,6 +15,10 @@ public class ScheduledService {
         return new ScheduledDTO(scheduledRepository.save(scheduled));
     }
 
+    public List<ScheduledDTO> listAllScheduledDatesByUser(String userId){
+        return scheduledRepository.findByUsers_Id(userId).stream().map(ScheduledDTO::new).toList();
+    }
+    
     public List<ScheduledDTO> listAllScheduledDates(){
        return scheduledRepository.findAllWithCustomer().stream().map(ScheduledDTO::new).toList();
     }
