@@ -38,14 +38,14 @@ public class Users implements UserDetails {
     private UserRole role = UserRole.CUSTOMER;
     private Boolean loyalCustomer = false;
 
+    @OneToMany(mappedBy = "users")
+    private List<Scheduled> scheduled;
+
     public Users(String login, String phone, String password){
         this.login = login;
         this.phone = phone;
         this.password = password;
     }
-
-    @OneToMany(mappedBy = "users")
-    private List<Scheduled> scheduled;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
