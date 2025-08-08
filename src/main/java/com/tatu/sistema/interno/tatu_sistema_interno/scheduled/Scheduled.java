@@ -1,5 +1,6 @@
 package com.tatu.sistema.interno.tatu_sistema_interno.scheduled;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.tatu.sistema.interno.tatu_sistema_interno.user.Users;
 
 import java.time.LocalDate;
@@ -14,7 +15,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinColumn;  
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -29,17 +30,12 @@ public class Scheduled {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate scheduledDate;
+    @JsonFormat(pattern = "HH:mm")
     private LocalTime scheduledTime;
     
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Users users;
-
-    // public Scheduled(Long id, LocalTime scheduledTime, Users users){
-    //     this.id = id;
-    //     this.scheduledTime = scheduledTime;
-    //     this.users = users;
-    // }
-
 }
