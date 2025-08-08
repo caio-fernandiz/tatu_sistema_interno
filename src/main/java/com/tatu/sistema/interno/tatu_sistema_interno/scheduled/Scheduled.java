@@ -34,7 +34,6 @@ public class Scheduled {
     private LocalDate scheduledDate;
     @JsonFormat(pattern = "HH:mm")
     private LocalTime scheduledTime;
-    
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Users users;
