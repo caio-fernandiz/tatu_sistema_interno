@@ -4,8 +4,7 @@ import com.tatu.sistema.interno.tatu_sistema_interno.user.Users;
 
 import jakarta.validation.Valid;
 
-import java.time.LocalDateTime;
-
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +46,7 @@ public class ScheduledController {
     }
 
     @GetMapping("/show/schedules/{scheduledDate}")
-    public ResponseEntity<List<ScheduledDTO>> listAllSchedulesByDate (@PathVariable LocalDateTime scheduledDate) {
+    public ResponseEntity<List<ScheduledDTO>> listAllSchedulesByDate (@PathVariable LocalDate scheduledDate) {
         List<ScheduledDTO> scheduledForDate = scheduledService.listAllSchedulesByDate(scheduledDate);
         return new ResponseEntity<>(scheduledForDate, HttpStatus.OK);
     }

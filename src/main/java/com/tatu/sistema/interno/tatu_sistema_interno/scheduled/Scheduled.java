@@ -2,7 +2,8 @@ package com.tatu.sistema.interno.tatu_sistema_interno.scheduled;
 
 import com.tatu.sistema.interno.tatu_sistema_interno.user.Users;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,11 +29,17 @@ public class Scheduled {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDateTime scheduledDate;
-
+    private LocalDate scheduledDate;
+    private LocalTime scheduledTime;
     
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Users users;
+
+    // public Scheduled(Long id, LocalTime scheduledTime, Users users){
+    //     this.id = id;
+    //     this.scheduledTime = scheduledTime;
+    //     this.users = users;
+    // }
 
 }
